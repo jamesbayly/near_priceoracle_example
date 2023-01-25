@@ -1,7 +1,9 @@
 # SubQuery - Starter Package
 
 The Starter Package is an example that you can use as a starting point for developing your SubQuery project.
-A SubQuery package defines which data The SubQuery will index from the Substrate blockchain, and how it will store it.
+A SubQuery Project defines which data The SubQuery will index from the Substrate blockchain, and how it will store it.
+
+This is an example project that indexes price oracle feeds from the NEAR blockchain using SubQuery.
 
 ## Preparation
 

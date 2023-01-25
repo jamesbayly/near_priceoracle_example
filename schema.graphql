@@ -1,8 +1,11 @@
-type NearBlockEntity @entity {
+type Task @entity {
   id: ID!
-  author: String!
-  hash: String!
+  creator: String!
+  blockHeight: BigInt!
   timestamp: BigInt!
+  maxPrice: BigInt
+  minPrice: BigInt
+  mTasksPerSecond: Int
 }
 
 type NearTxEntity @entity {
