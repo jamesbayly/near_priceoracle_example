@@ -22,7 +22,7 @@ network:
   # When developing your project we suggest getting a private API key from a commercial provider
   endpoint: https://archival-rpc.mainnet.near.org
   # Optionally provide the HTTP endpoint of a full chain dictionary to speed up processing
-  # dictionary: https://api.subquery.network/sq/subquery/near-dictionary
+  dictionary: https://api.subquery.network/sq/subquery/near-dictionary
   bypassBlocks: [81003306] # This is a missing block from the NEAR mainnet chain that we are skipping
 dataSources:
   - kind: near/Runtime
