@@ -1,22 +1,14 @@
-type Task @entity {
-  id: ID!
+type Oracle @entity {
+  id: ID! # We'll use the account_id of the oracle as the ID
   creator: String!
   blockHeight: BigInt!
-  timestamp: BigInt!
-  maxPrice: BigInt
-  minPrice: BigInt
-  mTasksPerSecond: Int
+  timestamp: Int!
 }
 
-type NearTxEntity @entity {
+type Price @entity {
   id: ID!
-  signer: String!
-  receiver: String!
-}
-
-type NearActionEntity @entity {
-  id: ID!
-  sender: String!
-  receiver: String!
-  amount: BigInt!
+  oracle: Oracle! # The oracle that reported this price
+  assetID: String!
+  price: Int!
+  decimals: Int!
 }
