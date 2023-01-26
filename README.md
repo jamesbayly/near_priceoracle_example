@@ -88,17 +88,28 @@ Open your browser and head to `http://localhost:3000`.
 
 Finally, you should see a GraphQL playground is showing in the explorer and the schemas that ready to query.
 
-For the `subql-starter` project, you can try to query with the following code to get a taste of how it works.
+For the `subql-starter` project, you can try to query with the following code to get a taste of how it works. It shows a list of the most recent prices, and the most active oracles(by number of prices submitted)
 
 ```graphql
-{
-  query {
-    starterEntities(first: 10) {
-      nodes {
-        field1
-        field2
-        field3
+query {
+  prices(first: 50, orderBy: BLOCK_HEIGHT_DESC) {
+    nodes {
+      id
+      assetID
+      price
+      decimals
+      oracleId
+      oracle {
+        id
       }
+    }
+  }
+  oracles(first: 50, orderBy: PRICES_COUNT_DESC) {
+    nodes {
+      id
+      creator
+      blockHeight
+      timestamp
     }
   }
 }
