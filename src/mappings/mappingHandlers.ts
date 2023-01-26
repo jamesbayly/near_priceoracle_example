@@ -25,7 +25,7 @@ export async function handleNewOracle(action: NearAction): Promise<void> {
   await checkAndCreateOracle(payload.account_id, action.transaction);
 }
 
-export async function handleNewPriceAction(action: NearAction): Promise<void> {
+export async function handleNewPrice(action: NearAction): Promise<void> {
   const payload: NewPrices = JSON.parse(
     Buffer.from(action.action.args, "base64").toString()
   );

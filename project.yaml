@@ -36,7 +36,7 @@ dataSources:
             type: FunctionCall
             methodName: add_oracle
             receiver: priceoracle.near
-        - handler: handleNewPriceAction
+        - handler: handleNewPrice
           kind: near/ActionHandler
           filter:
             type: FunctionCall
