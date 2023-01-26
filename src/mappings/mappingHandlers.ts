@@ -16,6 +16,7 @@ type NewPrices = {
 };
 
 export async function handleNewOracle(action: NearAction): Promise<void> {
+  // Data is encoded in base64 in the args, so we first decode it and parse into the correct type
   const payload: NewOracle = JSON.parse(
     Buffer.from(action.action.args, "base64").toString()
   );
@@ -26,6 +27,7 @@ export async function handleNewOracle(action: NearAction): Promise<void> {
 }
 
 export async function handleNewPrice(action: NearAction): Promise<void> {
+  // Data is encoded in base64 in the args, so we first decode it and parse into the correct type
   const payload: NewPrices = JSON.parse(
     Buffer.from(action.action.args, "base64").toString()
   );
