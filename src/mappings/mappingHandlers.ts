@@ -1,4 +1,4 @@
-import { FunctionCall, NearAction, NearTransaction } from "@subql/types-near";
+import { NearAction, NearTransaction } from "@subql/types-near";
 import { Oracle, Price } from "../types";
 
 type NewOracle = {
@@ -17,9 +17,7 @@ type NewPrices = {
 
 export async function handleNewOracle(action: NearAction): Promise<void> {
   // Data is encoded in base64 in the args, so we first decode it and parse into the correct type
-  const payload: NewOracle = JSON.parse(
-    Buffer.from(action.action.args, "base64").toString()
-  );
+  const payload: NewOracle = action.action.args.toJson();
   logger.info(
     `Handling new oracle ${payload.account_id} at ${action.transaction.block_height}`
   );
@@ -28,9 +26,7 @@ export async function handleNewOracle(action: NearAction): Promise<void> {
 
 export async function handleNewPrice(action: NearAction): Promise<void> {
   // Data is encoded in base64 in the args, so we first decode it and parse into the correct type
-  const payload: NewPrices = JSON.parse(
-    Buffer.from(action.action.args, "base64").toString()
-  );
+  const payload: NewPrices = action.action.args.toJson();
   logger.info(
     `Handling new price action at ${action.transaction.block_height}`
   );
