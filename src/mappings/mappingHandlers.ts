@@ -18,10 +18,12 @@ type NewPrices = {
 export async function handleNewOracle(action: NearAction): Promise<void> {
   // Data is encoded in base64 in the args, so we first decode it and parse into the correct type
   const payload: NewOracle = action.action.args.toJson();
-  logger.info(
-    `Handling new oracle ${payload.account_id} at ${action.transaction.block_height}`
-  );
-  await checkAndCreateOracle(payload.account_id, action.transaction);
+  if (payload.account_id) {
+    logger.info(
+      `Handling new oracle ${payload.account_id} at ${action.transaction.block_height}`
+    );
+    await checkAndCreateOracle(payload.account_id, action.transaction);
+  }
 }
 
 export async function handleNewPrice(action: NearAction): Promise<void> {
